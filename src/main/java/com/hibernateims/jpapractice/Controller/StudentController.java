@@ -5,11 +5,13 @@ import com.hibernateims.jpapractice.Services.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping(path = "/api")
+@RequestMapping(path = "/api/students")
+@CrossOrigin("*")
 public class StudentController {
     @Autowired
     private StudentService studentService;
@@ -25,12 +27,12 @@ public class StudentController {
     }
 
     @PostMapping
-    public Student addAStudent(@RequestBody Student newStudent) {
+    public Student addAStudent(@Valid @RequestBody Student newStudent) {
         return studentService.addAStudent(newStudent);
     }
 
     @PutMapping
-    public Optional<Student> updatStudent(@RequestBody Student currStudent) {
+    public Optional<Student> updatStudent(@Valid @RequestBody Student currStudent) {
         return studentService.updateStudent(currStudent.id, currStudent);
     }
 

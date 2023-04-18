@@ -12,6 +12,7 @@ public class Student {
     @Column
     public String name;
     @Column
-    @Pattern(regexp = "")
+    @Pattern(regexp = "[a-z|A-Z|0-9|._%+-]+@[a-zA-Z0-9.-]+\\.[a-z|A-Z]{2,}", message="Invalid email")
     public String email;
+    public String imageName;
 }
